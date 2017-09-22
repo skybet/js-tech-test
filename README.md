@@ -56,7 +56,7 @@ Markets can also be `suspended` - this affects all prices belonging to the marke
 We realise everyone has different levels of skill and experience when it comes to development so we have listed different levels of tasks below for you to choose from. If you do not have the time or the knowledge to complete them all then that's ok, we just want to see how you approach the problem and get a feel for how you code.
 
 
-The API uses a snapshot of data from a (relatively) recent point in time. As such, the start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value but should not be used to calculate the amount of time elapsed in a game as they will likely be hugely inaccurate.
+The API uses a snapshot of data from a (relatively) recent point in time. As such, the start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value. They should not be used to calculate the amount of time elapsed in a game as they will likely be hugely inaccurate.
 
 ### Basic
 
