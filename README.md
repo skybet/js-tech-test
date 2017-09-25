@@ -52,9 +52,9 @@ At a high level we will be looking for:
 * Security best practises applied
 * Good understanding of errors and how to handle them
 
-There's flexibility in the review process to take into account candidates who have strengths in different areas. Submissions that are very strong on visual design, UX and css are equally as valid as those which focus on the underlying code. 
+There's flexibility in the review process to take into account candidates who have strengths in different areas. Submissions that are very strong on visual design, UX and css are equally as valid as those which focus on the underlying code.
 
-As mentioned previously, we aren't prescribing any specific languages, libraries or frameworks for the test but obviously the reviewer will need to take into account choices made in this area. For example, a submission using a technology like [create react app]() or [ember.js]() will potentially offer a more complete set of tasks than one attempting to build everything from scratch. It is up to you to decide how pragmatic you wish to be here, make sure you choose an approach which you feel will show off your talents most effectively.
+As mentioned previously, we aren't prescribing any specific languages, libraries or frameworks for the test but obviously the reviewer will need to take into account choices made in this area. For example, a submission using a technology like [create react app](https://github.com/facebookincubator/create-react-app) or [ember.js](https://www.emberjs.com/) will potentially offer a more complete set of tasks than one attempting to build everything from scratch. It is up to you to decide how pragmatic you wish to be. Make sure you choose an approach which you feel will show off your talents most effectively.
 
 ## Getting Started
 
