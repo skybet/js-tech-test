@@ -4,7 +4,7 @@ This test comes with a mock API and WebSocket server that represents a snapshot 
 
 The challenge is to build a lightweight application to display the events returned by the API and enable users to browse for more details and betting opportunities.
 
-Full details of the API are available [on the docker hub page](https://hub.docker.com/r/sbgtechtest/api/) and further information about terms used, example API responses and the betting domain in general are available in [the background docs](/Background.md)
+Full details of the API are available [on the docker hub page](https://hub.docker.com/r/sbgtechtest/api/) and further information about terms used, example API responses and the betting domain in general are available in [the background docs](./Background.md)
 
 ## The Test
 
