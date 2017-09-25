@@ -14,11 +14,11 @@ An event is a collection of betting opportunities typically linked to a specific
 
 ### Event Class
 
-The "class" of an event typically links to the type of sport the event belongs to. While a typical betting website offers odds on more than just sports, for the purposes of this test you can assume that `classId` implicitly means "sport". All the events will belong to the "Football" class.
+The "class" of an event typically links to the type of sport the event belongs to. While a typical betting website offers odds on more than just sports, for the purposes of this test you can assume that `classId` implicitly means `sportId`. All the events will belong to the "Football" class.
 
 ### Event Type
 
-The "type" of an Event refers to the competition or grouping of an event. For example, in the Football class, type's typically refer to competitions such as "Premier League", "FA Cup" and "Football Live".
+The "type" of an Event refers to the competition or grouping of an event. For example, in the Football class, types typically refer to competitions such as "Premier League", "FA Cup" and "Football Live".
 
 Live Football events have an extra type hint (`linkedEventTypeName`) so it is possible to link a live game to the original competition it belonged to. The reasons behind having a "Football Live" type are long and complicated and will not help with your submission for this test!
 
@@ -50,29 +50,30 @@ Markets can also be `suspended` - this affects all prices belonging to the marke
 ![Events displayed on the Sky Bet homepage](./images/homepage.png)
 ![Events displayed on the Sky Bet in-play page](./images/live-overview.png)
 ![Outcome status explained](./images/outcome-status.png)
+![Standard market example](./images/standard-market.png)
+![Correct Score market example](./images/correct-score-market.png)
 
 ## The Test
 
 We realise everyone has different levels of skill and experience when it comes to development so we have listed different levels of tasks below for you to choose from. If you do not have the time or the knowledge to complete them all then that's ok, we just want to see how you approach the problem and get a feel for how you code.
 
-
 The API uses a snapshot of data from a (relatively) recent point in time. As such, the start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value. They should not be used to calculate the amount of time elapsed in a game as they will likely be hugely inaccurate.
 
-### Basic
+### Task One
 
 Using the provided API: 
 1. Build an application which displays the currently live Football events. Events are available from the `/football/live` API endpoint.
 2. Add an option to show the primary market for each of the events
 3. Add a feature to toggle the odds display between fractional and decimal (this should apply globally to any place in the app where odds are shown)
 
-### Intermediate
+### Task Two
 
 1. Add a feature to allow users to browse to a page showing full details for one of the events
     1. Use as much of the detail in the Event response as possible to inform the user of meta data such as Event Type, start time and
 2. To save on bandwidth, the event API response will only include outcomes for the first ten markets in an event. Add a feature to lazy load the outcomes for any market that doesn't have outcomes loaded as part of the initial response
 3. Enable users to browse to other events directly from an individual event page
 
-### Advanced
+### Task Three
 
 1. Connect to the WebSocket server and listen to relevant updates for markets and outcomes.
     1. Use the included images to help understand what `status.suspended` implies for the User.
