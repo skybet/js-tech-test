@@ -49,7 +49,7 @@ At a high level we will be looking for:
 * Well structured code
 * High quality code that uses relevant design patterns
 * Appropriate unit tests
-* Security best practises applied
+* Security best practices applied
 * Good understanding of errors and how to handle them
 
 There's flexibility in the review process to take into account candidates who have strengths in different areas. Submissions that are very strong on visual design, UX and css are equally as valid as those which focus on the underlying code.
