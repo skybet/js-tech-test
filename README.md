@@ -97,9 +97,10 @@ See the documentation [on the docker hub page](https://hub.docker.com/r/sbgtecht
 
         git bundle create <yourname>.bundle --all --branches
 
-* A covering note explaining the technology choices you have made.
-* Any instructions required to run your solution and tests in a Linux environment.
+* Replace the contents of this README.md with:
+** A covering note explaining the technology choices you have made.
+** Any instructions required to run your solution and tests in a Linux environment.
 
-## Assessment Policy
+## Equality & Diversity 
 
 We consider all candidates equally, fairly and without bias.  To that end, we ask that you do not leave any personally identifying information in your submission (such as your name within an author field or file, or in use as test data).  We run all VCS-based submissions through an anonymiser before assessment, so that there is no identifying information in the commit history, but this will only remove references in the committing author and email address, not deep in the code submitted.
