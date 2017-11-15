@@ -93,10 +93,12 @@ See the documentation [on the docker hub page](https://hub.docker.com/r/sbgtecht
 
 ## The Deliverable
 
-1. Replace the contents of this README.md with:
+Replace the contents of this README.md with:
+
   1. A covering note explaining the technology choices you have made.
   1. Any instructions required to run your solution and tests in a Linux environment.
-1. A git bundled repository showing your commit history with all your commits on the master branch:
+
+Email as an attachment or a link the git bundled repository showing your commit history with all your commits on the master branch:
 
         git bundle create <anything>.bundle --all --branches
 
