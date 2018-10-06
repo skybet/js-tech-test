@@ -78,7 +78,9 @@ docker-compose up
 docker-compose up -d
 ```
 
-The API will now be available on `http://localhost:8888/` and you should be able to view the available routes by hitting the API root.
+The API will now be available on `http://localhost:8888/` and you should be able to view the available routes by hitting the API root. 
+
+If you are developing on Windows it's likely that docker won't have mapped the ports to `localhost`. Run `docker-machine ip default` to find the correct IP, the ports and endpoints will be the same.
 
 The WebSocket Server will be available on `ws://localhost:8889` and you can test this is working by subscribing to all outcome updates:
 
