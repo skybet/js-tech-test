@@ -33,7 +33,7 @@ websocket.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false}));
 1. Add a feature to allow users to browse for full details for one of the events (this may be a new page or some other mechanic)
     1. Use as much of the detail in the Event response as possible to inform the user of meta data such as event type, start time and scores
 2. Event responses sent via the WebSocket only include an array of IDs for the markets it includes. Use the Event payload to build further queries to the API so you can show a list of all the markets available for the event.
-3. Markets similarly contain an array of IDs for outcomes. Use this data to initially show the Outcomes for the first ten Markets only.
+3. Markets similarly contain an array of IDs for outcomes. Use this data to initially show the outcomes for the first ten markets only.
    1. Markets should be sorted by displayOrder (ascending) and then name.
 4. Add the ability to load the outcomes for a market on demand (on skybet.com this happens when the market's accordion is clicked)
 
