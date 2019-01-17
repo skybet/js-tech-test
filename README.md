@@ -10,27 +10,35 @@ Full details of the API are available [on the docker hub page](https://hub.docke
 
 We realise everyone has different levels of skill and experience when it comes to development so we have listed different levels of tasks below for you to choose from. If you do not have the time or the knowledge to complete them all then that's ok, we just want to see how you approach the problem and get a feel for how you code.
 
-The API uses a snapshot of data from a (relatively) recent point in time. As such, the start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value. They should not be used to calculate the amount of time elapsed in a game as they will likely be hugely inaccurate.
+The API uses a snapshot of Sky Bet's catalogue as the underlying data source. The start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value only. They should not be used to calculate the amount of time elapsed in a game as they will be hugely inaccurate!
+
 
 ### Task One
 
-Using the provided API: 
-1. Build an application which displays the currently live Football events. Events are available from the `/football/live` API endpoint.
+Using the provided WebSocket API:
+1. Build an application which displays the currently live Football events. An example of making this request is shown below.
 2. Add an option to show the primary market for each of the events
 3. Add a feature to toggle the odds display between fractional and decimal (this should apply globally to any place in the app where odds are shown)
+
+```javascript
+// The WebSocket API responds to several different actions: getEvent, getMarket, getOutcome and getLiveEvents
+// To fetch all the currently live events (without primary markets) you can do something similar to the below
+// NB. All payloads to the WebSocket API should be stringified
+websocket.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false}));
+```
 
 ### Task Two
 
 1. Add a feature to allow users to browse for full details for one of the events (this may be a new page or some other mechanic)
     1. Use as much of the detail in the Event response as possible to inform the user of meta data such as event type, start time and scores
-2. To save on bandwidth, the event API response will only include outcomes for the first ten markets in an event. Add a feature to lazy load the outcomes for any market that doesn't have outcomes loaded as part of the initial response
-3. Enable users to browse to other events directly when viewing an event's details (i.e. not having to navigate via the overview)
+2. Event responses sent via the WebSocket only include an array of IDs for the markets it includes. Use the Event payload to build further queries to the API so you can show a list of all the markets available for the event.
+3. Markets similarly contain an array of IDs for outcomes. Use this data to show the Outcomes for the first ten Markets only. Markets should be sorted by displayOrder (ascending) and then name.
 
 ### Task Three
 
-1. Connect to the WebSocket server and listen to relevant updates for markets and outcomes.
+1. Use the ability to subscribe to updates for events, outcomes and markets of interest.
     1. Use the included images to help understand what `status.suspended` implies for the User.
-2. Instead of showing all events in one list for the overview, group them by their `linkedEventTypeName` property. A missing value should cause the grouping to fall back to the `typeName` property.
+2. On the overview page, instead of showing all events in one list, group them by their `linkedEventTypeName` property. A missing value should cause the grouping to fall back to the `typeName` property.
     1. Additionally, anywhere you are displaying full details of an event, where possible use the `linkedEventTypeName` to highlight the competition the event belongs to.
 3. Add support for displaying markets with different types (i.e. `win-draw-win` and `correct-score`) with more appropriate layouts. (See the [live website](https://m.skybet.com) for inspiration.)
 4. Support "deep linking" of events (i.e. enable a user to browse directly to full details for an event instead of requiring them to navigate from the overview list)
@@ -66,7 +74,6 @@ As mentioned previously, we aren't prescribing any specific languages, libraries
 
 Full details of the API are available [on the docker hub page](https://hub.docker.com/r/sbgtechtest/api/). We would recommend running with `docker-compose up` so any logs from the API are visible in the terminal.
 
-
 ```bash
 # running the basic image
 docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api
@@ -89,6 +96,7 @@ The WebSocket Server will be available on `ws://localhost:8889` and you can test
 const w = new WebSocket("ws://localhost:8889");
 w.addEventListener("message", m => console.log(JSON.parse(m.data)));
 w.send(JSON.stringify({type: "subscribe", keys: ["o.*"]}));
+w.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false }));
 ```
 
 See the documentation [on the docker hub page](https://hub.docker.com/r/sbgtechtest/api/) for full details of the WebSocket interface.
