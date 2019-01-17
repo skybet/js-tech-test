@@ -12,6 +12,7 @@ We realise everyone has different levels of skill and experience when it comes t
 
 The API uses a snapshot of Sky Bet's catalogue as the underlying data source. The start times for the events are accurate as of the snapshot so can be used for displaying as an absolute value only. They should not be used to calculate the amount of time elapsed in a game as they will be hugely inaccurate!
 
+It is possible to explore the catalogue using the HTTP endpoints provided, however, we ask that you try and use the WebSocket connection to handle all data fetching as part of this test.
 
 ### Task One
 
@@ -32,16 +33,20 @@ websocket.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false}));
 1. Add a feature to allow users to browse for full details for one of the events (this may be a new page or some other mechanic)
     1. Use as much of the detail in the Event response as possible to inform the user of meta data such as event type, start time and scores
 2. Event responses sent via the WebSocket only include an array of IDs for the markets it includes. Use the Event payload to build further queries to the API so you can show a list of all the markets available for the event.
-3. Markets similarly contain an array of IDs for outcomes. Use this data to show the Outcomes for the first ten Markets only. Markets should be sorted by displayOrder (ascending) and then name.
+3. Markets similarly contain an array of IDs for outcomes. Use this data to initially show the Outcomes for the first ten Markets only.
+   1. Markets should be sorted by displayOrder (ascending) and then name.
+4. Add the ability to load the outcomes for a market on demand (on skybet.com this happens when the market's accordion is clicked)
 
 ### Task Three
 
-1. Use the ability to subscribe to updates for events, outcomes and markets of interest.
-    1. Use the included images to help understand what `status.suspended` implies for the User.
+1. Use the ability to subscribe to updates for events, outcomes and markets of interest. Handle these updates so that the UI correctly reflects any changes to data currently being displayed on the page.
+   1. Use the included images to help understand what `status.suspended` implies for the User.
+   2. Consider how the different levels of subscription affect the data received via the WebSocket.
 2. On the overview page, instead of showing all events in one list, group them by their `linkedEventTypeName` property. A missing value should cause the grouping to fall back to the `typeName` property.
     1. Additionally, anywhere you are displaying full details of an event, where possible use the `linkedEventTypeName` to highlight the competition the event belongs to.
 3. Add support for displaying markets with different types (i.e. `win-draw-win` and `correct-score`) with more appropriate layouts. (See the [live website](https://m.skybet.com) for inspiration.)
-4. Support "deep linking" of events (i.e. enable a user to browse directly to full details for an event instead of requiring them to navigate from the overview list)
+4. Allow the user to click on outcomes to add them to a bet slip. The bet slip should display enough information about the selected outcome for the user to be able to see the event name, market name, outcome name and odds.
+5. Manage WebSocket subscriptions to allow the bet slip to listen for updates to selected outcomes and markets as
 
 ## Languages
 
