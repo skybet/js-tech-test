@@ -46,7 +46,7 @@ websocket.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false}));
     1. Additionally, anywhere you are displaying full details of an event, where possible use the `linkedEventTypeName` to highlight the competition the event belongs to.
 3. Add support for displaying markets with different types (i.e. `win-draw-win` and `correct-score`) with more appropriate layouts. (See the [live website](https://m.skybet.com) for inspiration.)
 4. Allow the user to click on outcomes to add them to a bet slip. The bet slip should display enough information about the selected outcome for the user to be able to see the event name, market name, outcome name and odds.
-5. Manage WebSocket subscriptions to allow the bet slip to listen for updates to selected outcomes and markets as
+5. Manage WebSocket subscriptions to allow the bet slip to listen for updates to selected outcomes and markets as and when they change, and invalidate selections as appropriate.
 
 ## Languages
 
