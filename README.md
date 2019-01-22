@@ -14,11 +14,14 @@ The API uses a snapshot of Sky Bet's catalogue as the underlying data source. Th
 
 It is possible to explore the catalogue using the HTTP endpoints provided, however, we ask that you try and use the WebSocket connection to handle all data fetching as part of this test.
 
+> We have structured the test below with what we consider to be a sensible way of building up the application iteratively and sequentially. You are free to work on as many or as few of the subtasks (and in any order) that you feel showcases your capabilities best
+
 ### Task One
 
 Using the provided WebSocket API:
 1. Build an application which displays the currently live Football events. An example of making this request is shown below.
 2. Add an option to show the primary market for each of the events
+   1. The primary market should also result in the odds showing for any outcomes linked to the market
 3. Add a feature to toggle the odds display between fractional and decimal (this should apply globally to any place in the app where odds are shown)
 
 ```javascript
@@ -36,6 +39,7 @@ websocket.send(JSON.stringify({type: "getLiveEvents", primaryMarkets: false}));
 3. Markets similarly contain an array of IDs for outcomes. Use this data to initially show the outcomes for the first ten markets only.
    1. Markets should be sorted by displayOrder (ascending) and then name.
 4. Add the ability to load the outcomes for a market on demand (on skybet.com this happens when the market's accordion is clicked)
+5. Use the `displayable` status to filter events, markets and outcomes which should not be shown to the user
 
 ### Task Three
 
