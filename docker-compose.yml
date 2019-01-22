@@ -2,6 +2,6 @@ version: '3'
 services:
   api:
     image:
-      sbgtechtest/api:latest
+      sbgtechtest/api:2.0.0
     ports:
       - "8888-8890:8888-8890"
