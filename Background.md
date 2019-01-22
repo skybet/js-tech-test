@@ -18,7 +18,7 @@ Live Football events have an extra type hint (`linkedEventTypeName`) so it is po
 
 ### Price
 
-A price represents the odds for a specific betting opportunity. Prices are typically represented as fractions (10/1) or decimals to two decimal places (11.00)
+A price represents the odds for a specific betting opportunity. Prices are typically represented as fractions (10/1) or decimals to two decimal places (11.00); which one is shown is usually down to a user's preference.  A price is offered at a moment in time for any given outcome, and can change for various reasons, e.g. if a football team scores a goal, the chances of them winning the match increase and, accordingly, the price offered for them to win would lower.
 
 ### Outcome
 
@@ -43,6 +43,14 @@ Markets can also be `suspended` - this affects all prices belonging to the marke
 > All the data types mentioned above include a status flag which states whether the item can be displayed or not. This `displayable` property should be used to filter the data returned from an API so only the relevant items are shown on screen.
 >
 > If market is considered displayable but it contains no displayable outcomes, then it too should not be displayed. Similarly, if an event is considered displayable but has no displayable markets, it too should not be displayed.
+
+### Bet
+A Bet - in this, its simplest form - is a customer spending a fixed amount of money (their stake) to say that they think a specific outcome will happen and that they are happy with the price offered against that outcome at that given moment in time.  If that outcome does happen, the customer will receive their stake multiplied by the taken price.  If it does not, they receive nothing.
+
+If a price is in its fractional format, i.e. X/Y, e.g. 5/2, a fulfilled outcome means "for every 2 staked, receive 5; then also have your original stake back".  If a price is in its decimal format, i.e. 11.00, it means "for every 1 staked, multiply by 11.00".
+
+e.g. A customer bets £10 on the outcome of "Bradford City to beat Leeds United" (in the match where those two teams are playing each other).  At the time the customer decides to place the bet, the price for this outcome is 11/2, or 6.50.  At the end of the match, if the outcome has come true, the customer will receive £65.
+
 
 ## Visual Examples
 
