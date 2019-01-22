@@ -85,7 +85,7 @@ Full details of the API are available [on the docker hub page](https://hub.docke
 
 ```bash
 # running the basic image
-docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api
+docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api:2.0.0
 
 # running using docker compose
 docker-compose up
