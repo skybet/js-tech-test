@@ -119,7 +119,7 @@ Replace the contents of this README.md with:
 
 Email as an attachment or a link the git bundled repository showing your commit history with all your commits on the master branch:
 
-        git bundle create <anything>.bundle --all --branches
+        git bundle create <anything>.bundle --all
 
 ## Equality & Diversity 
 
