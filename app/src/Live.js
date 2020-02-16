@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Market from "./components/Market";
+import useLiveEvents from "./hooks/useLiveEvents";
 
 const Live = () => {
-  const [events, updateEvents] = useState([]);
+  const events = useLiveEvents();
 
-  useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8889");
-
-    socket.addEventListener("open", () =>
-      socket.send(
-        JSON.stringify({ type: "getLiveEvents", primaryMarkets: false })
-      )
-    );
-
-    socket.addEventListener("message", event => {
-      const response = JSON.parse(event.data);
-
-      // Potentially we can do more checks here to validate the data.
-      if (Array.isArray(response.data)) {
-        updateEvents(response.data);
-      }
-    });
-  }, []);
-
-  return (
-    <ul>
-      {events.map(({ eventId, name }) => (
-        <li key={eventId}>{name}</li>
+  return events.length === 0 ? (
+    <div>Loading...</div>
+  ) : (
+    <React.Fragment>
+      {events.map(({ eventId, name, markets }) => (
+        <div key={eventId} className="c-event">
+          <h2 key={eventId}>{name}</h2>
+          <Market id={markets[0]} />
+        </div>
       ))}
-    </ul>
+    </React.Fragment>
   );
 };
 
