@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Market /> renders as expected 1`] = `
+<DocumentFragment>
+  <div
+    class="c-market"
+  >
+    <h3>
+      Both teams to score
+    </h3>
+    <div>
+      <div>
+        Yes 3/1
+      </div>
+      <div>
+        Yes 3/1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

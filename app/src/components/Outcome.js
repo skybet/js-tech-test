@@ -15,7 +15,8 @@ const Outcome = ({ id }) => {
 
   return (
     <div>
-      {name} {oddsType === "fractional" ? `${num}/${den}` : decimal}
+      {name}{" "}
+      {oddsType === "fractional" ? `${num}/${den}` : Number(decimal).toFixed(2)}
     </div>
   );
 };

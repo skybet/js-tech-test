@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Live /> renders as expected 1`] = `
+<DocumentFragment>
+  <button>
+    Odds: fractional
+  </button>
+  <div
+    class="c-event"
+  >
+    <h2>
+      Everton vs West Ham
+    </h2>
+    <div
+      class="c-market"
+    >
+      <h3>
+        Both teams to score
+      </h3>
+      <div>
+        <div>
+          Yes 3/1
+        </div>
+        <div>
+          Yes 3/1
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
