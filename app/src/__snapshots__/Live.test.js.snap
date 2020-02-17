@@ -2,27 +2,68 @@
 
 exports[`<Live /> renders as expected 1`] = `
 <DocumentFragment>
-  <button>
+  <button
+    class="c-button"
+  >
     Odds: fractional
   </button>
   <div
     class="c-event"
   >
-    <h2>
-      Everton vs West Ham
-    </h2>
+    <div
+      class="c-event__name"
+    >
+      <div
+        class="c-event__competitors"
+      >
+        Everton
+        <br />
+        West Ham
+      </div>
+      <div
+        class="c-event__score"
+      >
+        3
+        <br />
+        0
+      </div>
+    </div>
     <div
       class="c-market"
     >
-      <h3>
+      <div
+        class="c-market__title"
+      >
         Both teams to score
-      </h3>
+      </div>
       <div>
-        <div>
-          Yes 3/1
+        <div
+          class="c-outcome"
+        >
+          <span
+            class="u-clr--blue u-mr--100"
+          >
+            Yes
+          </span>
+          <span
+            class="u-clr--red"
+          >
+            3/1
+          </span>
         </div>
-        <div>
-          Yes 3/1
+        <div
+          class="c-outcome"
+        >
+          <span
+            class="u-clr--blue u-mr--100"
+          >
+            Yes
+          </span>
+          <span
+            class="u-clr--red"
+          >
+            3/1
+          </span>
         </div>
       </div>
     </div>

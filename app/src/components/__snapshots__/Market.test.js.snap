@@ -5,15 +5,39 @@ exports[`<Market /> renders as expected 1`] = `
   <div
     class="c-market"
   >
-    <h3>
+    <div
+      class="c-market__title"
+    >
       Both teams to score
-    </h3>
+    </div>
     <div>
-      <div>
-        Yes 3/1
+      <div
+        class="c-outcome"
+      >
+        <span
+          class="u-clr--blue u-mr--100"
+        >
+          Yes
+        </span>
+        <span
+          class="u-clr--red"
+        >
+          3/1
+        </span>
       </div>
-      <div>
-        Yes 3/1
+      <div
+        class="c-outcome"
+      >
+        <span
+          class="u-clr--blue u-mr--100"
+        >
+          Yes
+        </span>
+        <span
+          class="u-clr--red"
+        >
+          3/1
+        </span>
       </div>
     </div>
   </div>

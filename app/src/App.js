@@ -11,8 +11,8 @@ function App() {
 
   return (
     <OddsContext.Provider value={[oddsType, toggleOdds]}>
-      <div className="App">
-        <header className="App-header">Stars Tech Test</header>
+      <div className="c-app">
+        <header className="c-app__header">Stars Tech Test</header>
         <Router>
           <Switch>
             <Route path="/">
