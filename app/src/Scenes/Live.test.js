@@ -1,6 +1,6 @@
 import React from "react";
 import Live from "./Live";
-import { renderWithContext } from "./setupTests";
+import { renderWithContext } from "../setupTests";
 
 describe("<Live />", () => {
   test("renders as expected", async () => {
