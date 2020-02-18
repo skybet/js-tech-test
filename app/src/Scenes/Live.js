@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Market from "./components/Market";
-import useLiveEvents from "./hooks/useLiveEvents";
-import { OddsContext } from "./App";
+import Market from "../components/Market";
+import useLiveEvents from "../hooks/useLiveEvents";
+import { OddsContext } from "../App";
 
 const Live = () => {
   const [oddsType, toggleOdds] = useContext(OddsContext);

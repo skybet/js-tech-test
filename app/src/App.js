@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Live from "./Live";
+import Live from "./Scenes/Live";
 
 export const OddsContext = React.createContext();
 
