@@ -22,6 +22,8 @@ Run server as described in the original task:
 
 Pre-requisite: yarn
 
+(in `/app` subdirectory)
+
 Build:
 
 ```
