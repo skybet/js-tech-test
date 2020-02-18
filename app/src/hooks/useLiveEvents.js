@@ -1,28 +1,16 @@
-import { useEffect, useState } from "react";
-import { SOCKET_URL } from "../config";
-
-const socket = new WebSocket(SOCKET_URL);
+import { useContext, useEffect } from "react";
+import { SocketContext } from "../App";
+import useStore from "./useStore";
 
 const useLiveEvents = () => {
-  const [events, updateEvents] = useState([]);
+  const [socket] = useContext(SocketContext);
+  const events = useStore("events");
 
   useEffect(() => {
-    socket.addEventListener("open", () =>
-      socket.send(
-        JSON.stringify({ type: "getLiveEvents", primaryMarkets: true })
-      )
+    socket.send(
+      JSON.stringify({ type: "getLiveEvents", primaryMarkets: true })
     );
-
-    socket.addEventListener("message", event => {
-      const response = JSON.parse(event.data);
-
-      if (response.type === "LIVE_EVENTS_DATA") {
-        updateEvents(response.data);
-      }
-    });
-
-    return socket.close;
-  }, []);
+  }, [socket]);
 
   return events;
 };

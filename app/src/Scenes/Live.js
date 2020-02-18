@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import Market from "../components/Market";
 import useLiveEvents from "../hooks/useLiveEvents";
-import { OddsContext } from "../App";
+import { Link } from "react-router-dom";
+import OddsToggle from "../components/OddsToggle";
 
 const Live = () => {
-  const [oddsType, toggleOdds] = useContext(OddsContext);
   const events = useLiveEvents();
 
   return events.length === 0 ? (
     <div>Loading...</div>
   ) : (
     <React.Fragment>
-      <button className="c-button" onClick={toggleOdds}>
-        Odds: {oddsType}
-      </button>
+      <OddsToggle />
       {events.map(({ eventId, markets, competitors, scores }) => (
         <div key={eventId} className="c-event">
           <div key={eventId} className="c-event__name">
@@ -21,6 +19,10 @@ const Live = () => {
               {competitors[0].name}
               <br />
               {competitors[1].name}
+              <br />
+              <Link className="c-event__full-market" to={`/event/${eventId}`}>
+                View Full Market
+              </Link>
             </div>
             <div className="c-event__score">
               {scores.home}

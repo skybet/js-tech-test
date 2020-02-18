@@ -1,27 +1,89 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Live from "./Scenes/Live";
+import { Event, Live } from "./Scenes/";
+import { SOCKET_URL } from "./config";
 
 export const OddsContext = React.createContext();
+export const SocketContext = React.createContext();
+export const StoreContext = React.createContext();
 
 function App() {
+  const [connected, setConnected] = useState(false);
+  const [socket, setSocket] = useState();
   const reducer = state => (state === "fractional" ? "decimal" : "fractional");
   const [oddsType, toggleOdds] = useReducer(reducer, "fractional");
 
+  const [events, setEvents] = useState([]);
+
+  const marketReducer = (state, market) => ({
+    ...state,
+    [market.marketId]: market
+  });
+  const [markets, updateMarket] = useReducer(marketReducer, {});
+
+  const outcomeReducer = (state, outcome) => ({
+    ...state,
+    [outcome.outcomeId]: outcome
+  });
+  const [outcomes, updateOutcome] = useReducer(outcomeReducer, {});
+
+  useEffect(() => {
+    if (!socket) {
+      const newSocket = new WebSocket(SOCKET_URL);
+      newSocket.addEventListener("open", () => {
+        setSocket(newSocket);
+        setConnected(true);
+      });
+
+      newSocket.addEventListener("message", event => {
+        const { type, data } = JSON.parse(event.data);
+
+        switch (type) {
+          case "MARKET_DATA":
+            updateMarket(data);
+            break;
+          case "LIVE_EVENTS_DATA":
+            setEvents(data);
+            break;
+          case "OUTCOME_DATA":
+            updateOutcome(data);
+            break;
+          default:
+            console.warn(type);
+        }
+      });
+    }
+  }, [socket]);
+
+  if (!connected) {
+    return <div>Connecting...</div>;
+  }
+
   return (
-    <OddsContext.Provider value={[oddsType, toggleOdds]}>
-      <div className="c-app">
-        <header className="c-app__header">Stars Tech Test</header>
-        <Router>
-          <Switch>
-            <Route path="/">
-              <Live />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-    </OddsContext.Provider>
+    <StoreContext.Provider
+      value={{
+        events: events,
+        market: markets,
+        outcome: outcomes
+      }}
+    >
+      <SocketContext.Provider
+        value={[socket, connected, setSocket, setConnected]}
+      >
+        <OddsContext.Provider value={[oddsType, toggleOdds]}>
+          <div className="c-app">
+            <header className="c-app__header">Stars Tech Test</header>
+            <Router>
+              <Switch>
+                <Route path="/event/:eventId" component={Event} />
+                <Route path="/" component={Live} />
+              </Switch>
+            </Router>
+          </div>
+        </OddsContext.Provider>
+      </SocketContext.Provider>
+    </StoreContext.Provider>
   );
 }
 
