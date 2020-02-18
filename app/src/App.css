@@ -1,20 +1,17 @@
-.App {
+.c-app {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.c-button {
+  background-color: #ffe600;
+  border: 0;
+  color: #0d2051;
+  font-size: 1rem;
+  padding: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.c-app__header {
+  background-color: #0d2051;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -24,15 +21,60 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.c-event {
+  display: flex;
+  margin-bottom: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.c-event__competitors {
+  font-size: 1.2rem;
+  text-align: left;
+  padding-right: 1rem;
+}
+
+.c-event__score {
+  font-size: 1.2rem;
+}
+
+.c-event__name {
+  background-color: #0d2051;
+  color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 40%;
+}
+
+.c-market {
+  width: 100%;
+}
+
+.c-market__title {
+  background-color: #0d2051;
+  color: whitesmoke;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.c-outcome {
+  border-bottom: 1px solid #0d2051;
+  padding: 1rem;
+}
+
+.c-outcome:hover {
+  background-color: #eff4fb;
+  cursor: pointer;
+}
+
+.u-mr--100 {
+  margin-right: 0.5rem;
+}
+
+.u-clr--blue {
+  color: #0d2051;
+}
+
+.u-clr--red {
+  color: #d92231;
 }

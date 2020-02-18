@@ -7,7 +7,7 @@ const Market = ({ id }) => {
 
   return marketId ? (
     <div className="c-market">
-      <h3>{name}</h3>
+      <div className="c-market__title">{name}</div>
       <div>
         {outcomes &&
           outcomes.map(outcome => <Outcome key={outcome} id={outcome} />)}

@@ -11,10 +11,23 @@ const Live = () => {
     <div>Loading...</div>
   ) : (
     <React.Fragment>
-      <button onClick={toggleOdds}>Odds: {oddsType}</button>
-      {events.map(({ eventId, name, markets }) => (
+      <button className="c-button" onClick={toggleOdds}>
+        Odds: {oddsType}
+      </button>
+      {events.map(({ eventId, markets, competitors, scores }) => (
         <div key={eventId} className="c-event">
-          <h2 key={eventId}>{name}</h2>
+          <div key={eventId} className="c-event__name">
+            <div className="c-event__competitors">
+              {competitors[0].name}
+              <br />
+              {competitors[1].name}
+            </div>
+            <div className="c-event__score">
+              {scores.home}
+              <br />
+              {scores.away}
+            </div>
+          </div>
           <Market id={markets[0]} />
         </div>
       ))}

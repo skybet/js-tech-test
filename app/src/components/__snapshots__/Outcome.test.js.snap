@@ -2,24 +2,57 @@
 
 exports[`<Outcome /> falls back to decimal if bad data 1`] = `
 <DocumentFragment>
-  <div>
-    Yes 4.00
+  <div
+    class="c-outcome"
+  >
+    <span
+      class="u-clr--blue u-mr--100"
+    >
+      Yes
+    </span>
+    <span
+      class="u-clr--red"
+    >
+      4.00
+    </span>
   </div>
 </DocumentFragment>
 `;
 
 exports[`<Outcome /> renders decimal odds as expected 1`] = `
 <DocumentFragment>
-  <div>
-    Yes 4.00
+  <div
+    class="c-outcome"
+  >
+    <span
+      class="u-clr--blue u-mr--100"
+    >
+      Yes
+    </span>
+    <span
+      class="u-clr--red"
+    >
+      4.00
+    </span>
   </div>
 </DocumentFragment>
 `;
 
 exports[`<Outcome /> renders fractional odds as expected 1`] = `
 <DocumentFragment>
-  <div>
-    Yes 3/1
+  <div
+    class="c-outcome"
+  >
+    <span
+      class="u-clr--blue u-mr--100"
+    >
+      Yes
+    </span>
+    <span
+      class="u-clr--red"
+    >
+      3/1
+    </span>
   </div>
 </DocumentFragment>
 `;

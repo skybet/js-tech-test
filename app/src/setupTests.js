@@ -31,7 +31,9 @@ jest.mock("./hooks/useLiveEvents", () =>
     {
       eventId: 111,
       name: "Everton vs West Ham",
-      markets: [111, 222]
+      markets: [111, 222],
+      competitors: [{ name: "Everton" }, { name: "West Ham" }],
+      scores: { home: 3, away: 0 }
     }
   ])
 );
