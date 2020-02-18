@@ -32,6 +32,11 @@
   padding-right: 1rem;
 }
 
+.c-event__full-market {
+  color: white;
+  font-size: 0.75rem;
+}
+
 .c-event__score {
   font-size: 1.2rem;
 }
@@ -77,4 +82,27 @@
 
 .u-clr--red {
   color: #d92231;
+}
+
+.c-full-event__name {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.c-full-event__meta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.c-full-event__back {
+  margin-right: 2rem;
+}
+
+.c-full-event__meta-item {
+  background-color: #ffe600;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
 }

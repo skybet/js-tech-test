@@ -1,29 +1,14 @@
-import { useEffect, useState } from "react";
-import { SOCKET_URL } from "../config";
-
-const socket = new WebSocket(SOCKET_URL);
+import { useContext, useEffect } from "react";
+import { SocketContext } from "../App";
+import useStore from "./useStore";
 
 const useMarket = id => {
-  const [market, setMarket] = useState([]);
+  const [socket] = useContext(SocketContext);
+  const market = useStore("market", id);
 
   useEffect(() => {
-    socket.send(
-      JSON.stringify({
-        type: "getMarket",
-        id
-      })
-    );
-
-    socket.addEventListener("message", event => {
-      const response = JSON.parse(event.data);
-
-      if (response.type === "MARKET_DATA" && response.data.marketId === id) {
-        setMarket(response.data);
-      }
-    });
-
-    return socket.close;
-  }, [id]);
+    socket.send(JSON.stringify({ type: "getMarket", id }));
+  }, [id, socket]);
 
   return market;
 };

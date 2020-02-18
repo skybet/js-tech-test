@@ -1,31 +1,15 @@
-import { useEffect, useState } from "react";
-import { SOCKET_URL } from "../config";
-
-const socket = new WebSocket(SOCKET_URL);
+import { useContext, useEffect } from "react";
+import { SocketContext } from "../App";
+import useStore from "./useStore";
 
 const useOutcome = id => {
-  const [outcome, setOutcome] = useState();
+  const outcome = useStore("outcome", id);
+  const [socket] = useContext(SocketContext);
 
   useEffect(() => {
     if (!id) return;
-
-    socket.send(
-      JSON.stringify({
-        type: "getOutcome",
-        id
-      })
-    );
-
-    socket.addEventListener("message", event => {
-      const response = JSON.parse(event.data);
-
-      if (response.type === "OUTCOME_DATA" && response.data.outcomeId === id) {
-        setOutcome(response.data);
-      }
-    });
-
-    return socket.close;
-  }, [id]);
+    socket.send(JSON.stringify({ type: "getOutcome", id }));
+  }, [id, socket]);
 
   return outcome;
 };
