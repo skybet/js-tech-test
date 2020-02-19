@@ -1,16 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { SocketContext } from "../App";
+import useStore from "./useStore";
 
 const useEvent = id => {
-  const [event, setEvent] = useState();
   const [socket] = useContext(SocketContext);
+  const event = useStore("selectedEvent");
 
   useEffect(() => {
-    fetch(`http://localhost:8888/sportsbook/event/${id}`)
-      .then(response => response.json())
-      .then(json => {
-        setEvent(json.event);
-      });
+    socket.send(JSON.stringify({ type: "getEvent", id: Number(id) }));
 
     socket.send(
       JSON.stringify({

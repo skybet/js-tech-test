@@ -4,7 +4,7 @@ import useStore from "./useStore";
 
 const useMarket = id => {
   const [socket] = useContext(SocketContext);
-  const market = useStore("market", id);
+  const market = useStore("markets", id);
 
   useEffect(() => {
     socket.send(JSON.stringify({ type: "getMarket", id }));
