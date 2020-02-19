@@ -1,14 +1,16 @@
 import { useContext, useEffect } from "react";
 import { SocketContext } from "../App";
-import useStore from "./useStore";
+import { useStore } from "./";
 
 const useMarket = id => {
   const [socket] = useContext(SocketContext);
   const market = useStore("markets", id);
 
   useEffect(() => {
-    socket.send(JSON.stringify({ type: "getMarket", id }));
-  }, [id, socket]);
+    if (!market) {
+      socket.send(JSON.stringify({ type: "getMarket", id }));
+    }
+  }, [id, socket, market]);
 
   return market;
 };

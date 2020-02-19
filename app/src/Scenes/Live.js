@@ -1,8 +1,8 @@
 import React from "react";
 import Market from "../components/Market";
-import useLiveEvents from "../hooks/useLiveEvents";
-import { Link } from "react-router-dom";
 import OddsToggle from "../components/OddsToggle";
+import { useLiveEvents } from "../hooks/";
+import { Link } from "react-router-dom";
 
 const Live = () => {
   const events = useLiveEvents();

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useOutcome from "../hooks/useOutcome";
+import { useOutcome } from "../hooks/";
 import { OddsContext } from "../App";
 
 const Outcome = ({ id }) => {

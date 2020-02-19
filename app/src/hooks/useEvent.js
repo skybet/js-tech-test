@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { SocketContext } from "../App";
-import useStore from "./useStore";
+import { useStore } from "./";
 
 const useEvent = id => {
   const [socket] = useContext(SocketContext);

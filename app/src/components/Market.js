@@ -1,6 +1,6 @@
 import React from "react";
 import Outcome from "./Outcome";
-import useMarket from "../hooks/useMarket";
+import { useMarket } from "../hooks/";
 
 const Market = ({ id }) => {
   const market = useMarket(id);
