@@ -4,7 +4,7 @@ import { StoreContext } from "../App";
 const useStore = (key, id) => {
   const store = useContext(StoreContext);
 
-  if (key === "market" || key === "outcome") {
+  if (key && id) {
     return store[key][id];
   }
 
