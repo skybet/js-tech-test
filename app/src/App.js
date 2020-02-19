@@ -11,10 +11,12 @@ export const StoreContext = React.createContext();
 function App() {
   const [connected, setConnected] = useState(false);
   const [socket, setSocket] = useState();
-  const reducer = state => (state === "fractional" ? "decimal" : "fractional");
-  const [oddsType, toggleOdds] = useReducer(reducer, "fractional");
+  const oddsReducer = state =>
+    state === "fractional" ? "decimal" : "fractional";
+  const [oddsType, toggleOdds] = useReducer(oddsReducer, "fractional");
 
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState();
 
   const marketReducer = (state, market) => ({
     ...state,
@@ -49,6 +51,9 @@ function App() {
           case "LIVE_EVENTS_DATA":
             setEvents(data);
             break;
+          case "EVENT_DATA":
+            setSelectedEvent(data);
+            break;
           case "OUTCOME_DATA":
             updateOutcome(data);
             break;
@@ -72,9 +77,10 @@ function App() {
   return (
     <StoreContext.Provider
       value={{
-        events: events,
-        market: markets,
-        outcome: outcomes
+        events,
+        markets,
+        outcomes,
+        selectedEvent
       }}
     >
       <SocketContext.Provider

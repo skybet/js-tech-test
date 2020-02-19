@@ -3,7 +3,7 @@ import { SocketContext } from "../App";
 import useStore from "./useStore";
 
 const useOutcome = id => {
-  const outcome = useStore("outcome", id);
+  const outcome = useStore("outcomes", id);
   const [socket] = useContext(SocketContext);
 
   useEffect(() => {
