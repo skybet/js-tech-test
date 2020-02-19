@@ -12,6 +12,25 @@ const useLiveEvents = () => {
     );
   }, [socket]);
 
+  useEffect(() => {
+    const eventsList = events.map(event => `e.${event.eventId}`);
+    socket.send(
+      JSON.stringify({
+        type: "subscribe",
+        keys: eventsList,
+        clearSubscription: true
+      })
+    );
+
+    return () =>
+      socket.send(
+        JSON.stringify({
+          type: "unsubscribe",
+          keys: eventsList
+        })
+      );
+  }, [events, socket]);
+
   return events;
 };
 

@@ -5,6 +5,8 @@ import useEvent from "../hooks/useEvent";
 import formatStartTime from "../helpers/startTime";
 import OddsToggle from "../components/OddsToggle";
 
+const INITIAL_MARKETS = 10;
+
 const Event = () => {
   const { eventId } = useParams();
   const event = useEvent(eventId);
@@ -45,7 +47,7 @@ const Event = () => {
           <div className="c-full-event__meta-item">Request a Bet</div>
         )}
       </div>
-      {markets.map(id => (
+      {markets.slice(0, INITIAL_MARKETS).map(id => (
         <Market key={id} id={id} />
       ))}
     </div>

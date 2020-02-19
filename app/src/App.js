@@ -24,7 +24,10 @@ function App() {
 
   const outcomeReducer = (state, outcome) => ({
     ...state,
-    [outcome.outcomeId]: outcome
+    [outcome.outcomeId]: {
+      ...state[outcome.outcomeId],
+      ...outcome
+    }
   });
   const [outcomes, updateOutcome] = useReducer(outcomeReducer, {});
 
@@ -49,8 +52,14 @@ function App() {
           case "OUTCOME_DATA":
             updateOutcome(data);
             break;
+          case "CURRENT_SUBSCRIPTIONS":
+            break;
+          case "PRICE_CHANGE":
+            updateOutcome(data);
+            break;
           default:
-            console.warn(type);
+            console.log(type);
+            break;
         }
       });
     }
